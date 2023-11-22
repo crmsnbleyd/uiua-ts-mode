@@ -45,7 +45,11 @@
    :language 'uiua
    :feature 'default
    :override t
-   '((function [ "." "∘" "id" "identity"])
+   '((function ["." "∘" "," ":" ";"
+		"duplicate"
+		"flip"
+		"pop"
+		"id" "identity"])
      @default)
 
    :language 'uiua
