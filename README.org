@@ -8,6 +8,9 @@ This is a treesitter-powered emacs mode for [[https://www.uiua.org][Uiua]], an a
 
 Much like the language itself, this mode is currently in progress.
 
+Please report any divergence from the major/minor releases of uiua
+as Github issues. They are considered bugs.
+
 ** Setup
 
 This mode builds on [[https://github.com/crmsnbleyd/uiua-mode][uiua-mode]], which you can use if you have an older
@@ -15,10 +18,7 @@ Emacs version.
 #+begin_src emacs-lisp
   (use-package uiua-ts-mode
     :mode "\\.ua\\'"
-    :straight
-    (uiua-mode
-     :type git :host github
-     :repo "crmsnbleyd/uiua-ts-mode"))
+    :ensure t)  ; or :straight t if using straight.el
 #+end_src
 Upon loading a .ua file, emacs will complain about not finding the grammar.
 Simply type ~M-x treesit-install-language-grammar~ then ~uiua~ to install it.
