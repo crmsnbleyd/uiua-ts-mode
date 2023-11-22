@@ -10,36 +10,28 @@ jobs:
     strategy:
       matrix:
         include:
-          - emacs: 27.1
-            ts: false
-            lint: false
           - emacs: 29.1
-            ts: true
             lint: true
           - emacs: snapshot
-            ts: true
-            lint: true
+            lint: false
     steps:
     - uses: purcell/setup-emacs@master
       with:
         version: ${{ matrix.emacs }}
     - uses: actions/checkout@v4
 
-    - name: Install uiua-mode
+    - name: Install dependencies
       run: emacs -Q -l .github/workflows/init.el -batch
                     --eval "(package-install 'uiua-mode)"
-
-    - name: Install package-lint
-      run: emacs -Q -l .github/workflows/init.el -batch
                     --eval "(package-install 'package-lint)"
 
-    - name: Lint uiua-ts-mode
+    - name: Compile
+      run: emacs -Q -l .github/workflows/init.el -batch
+                    -L. -f batch-byte-compile *.el
+
+    - name: Lint
       if: ${{ matrix.lint }}
       run: emacs -Q -l .github/workflows/init.el -batch
+                    --eval '(setq package-lint-main-file "uiua-ts-mode.el")'
                     -f package-lint-batch-and-exit
-                    uiua-ts-mode.el
-
-    - name: Install uiua-ts-mode locally
-      if: ${{ matrix.ts }}
-      run: emacs -Q -l .github/workflows/init.el -batch
-                    --eval '(package-install-file "uiua-ts-mode.el")'
+                    *.el
