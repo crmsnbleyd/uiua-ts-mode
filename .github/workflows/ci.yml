@@ -27,11 +27,10 @@ jobs:
 
     - name: Compile
       run: emacs -Q -l .github/workflows/init.el -batch
-                    -L. -f batch-byte-compile *.el
+                    -L . -f batch-byte-compile *.el
 
     - name: Lint
       if: ${{ matrix.lint }}
       run: emacs -Q -l .github/workflows/init.el -batch
                     --eval '(setq package-lint-main-file "uiua-ts-mode.el")'
-                    -f package-lint-batch-and-exit
-                    *.el
+                    -f package-lint-batch-and-exit *.el
