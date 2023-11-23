@@ -1,7 +1,7 @@
 ;;; uiua-ts-mode.el --- Uiua treesiter mode -*- lexical-binding:t -*-
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
-;; URL: https://github.com/crmsnbleyd/uiua-mode
+;; URL: https://github.com/crmsnbleyd/uiua-ts-mode
 ;; Keywords: languages, uiua
 ;; Package-Requires: ((emacs "29.1") (uiua-mode "0.0.5"))
 ;; Version: 0.0.5
