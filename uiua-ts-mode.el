@@ -43,18 +43,17 @@
    '((number) @uiua-number)
 
    :language 'uiua
-   :feature 'default
-   :override t
-   '((function ["." "∘" "," ":" ";"
-		"duplicate"
-		"flip"
-		"pop"
-		"id" "identity"])
-     @default)
-
-   :language 'uiua
    :feature 'monadic-function
    '((function _) @uiua-monadic-function)
+
+   ;; :language 'uiua
+   ;; :feature 'unadorned
+   ;; :override t
+   ;; '((function ["." "∘" "," ":" ";"
+   ;; 		"duplicate"
+   ;; 		"flip"
+   ;; 		"pop"
+   ;; 		"id" "identity"] @default))
 
    :language 'uiua
    :feature 'monadic-modifier
@@ -81,7 +80,7 @@
   (setq-local treesit-simple-indent-rules
 	      uiua-ts--indent-rules)
   (setq-local treesit-font-lock-feature-list
-	      '((comment default string)
+	      '((comment string)
 		(number)
 		(monadic-function
 		 monadic-modifier dyadic-modifier
