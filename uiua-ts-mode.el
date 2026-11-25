@@ -44,7 +44,11 @@
 
    :language 'uiua
    :feature 'monadic-function
-   '((function _) @uiua-monadic-function)
+   '((function1 _) @uiua-monadic-function)
+
+   :language 'uiua
+   :feature 'dyadic-function
+   '((function2 _) @uiua-dyadic-function)
 
    ;; :language 'uiua
    ;; :feature 'unadorned
@@ -82,7 +86,7 @@
   (setq-local treesit-font-lock-feature-list
 	      '((comment string)
 		(number)
-		(monadic-function
+		(monadic-function dyadic-function
 		 monadic-modifier dyadic-modifier
 		 noadic)))
   (treesit-major-mode-setup))
@@ -94,7 +98,7 @@ Uses tree-sitter."
   :group 'uiua
   (add-to-list
    'treesit-language-source-alist
-   '(uiua . ("https://github.com/shnarazk/tree-sitter-uiua.git")))
+   '(uiua . ("https://github.com/gankn2436/tree-sitter-uiua.git")))
   (setq-local font-lock-defaults nil) ; to let ts do the hard work
   (when (treesit-ready-p 'uiua)
     (treesit-parser-create 'uiua)
